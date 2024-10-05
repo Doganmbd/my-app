@@ -5,6 +5,7 @@ function App() {
   // State to hold the current time
   const [currentTime, setCurrentTime] = useState("");
   const [selectedId, setSelectedId] = useState(null); // State to track selected MII Duruş ID
+  const [filter, setFilter] = useState("all"); // State for filter: 'all' or 'small'
 
   // Function to update the time every second
   useEffect(() => {
@@ -32,12 +33,36 @@ function App() {
       details: "",
       explanation: "BOY KESİM",
     },
+    {
+      id: 601026,
+      workingUnit: "PARKE4",
+      startTime: "1 Eki 2024 07:45:30",
+      endTime: "1 Eki 2024 08:15:30",
+      duration: "00:30:00",
+      orderNo: "",
+      type: "OEE DURUŞU",
+      reasonCode: "",
+      responsible: "",
+      details: "",
+      explanation: "BOY KESİM",
+    },
   ]);
 
   // Function to handle radio button selection
   const handleSelection = (id) => {
     setSelectedId(id);
   };
+
+  // Filter data based on selection
+  const filteredData = data.filter((row) => {
+    if (filter === "small") {
+      // Convert duration from string to total seconds
+      const [hours, minutes, seconds] = row.duration.split(":").map(Number);
+      const totalSeconds = hours * 3600 + minutes * 60 + seconds;
+      return totalSeconds < 600; // less than 10 minutes
+    }
+    return true;
+  });
 
   return (
     <div className="app-container">
@@ -51,8 +76,31 @@ function App() {
       </div>
 
       <div className="filters">
-        <button className="filter-btn">Küçük Duruş</button>
-        <button className="filter-btn">Büyük Duruş</button>
+
+        <label>
+          <input
+            type="radio"
+            name="filter"
+            checked={filter === "small"}
+            onChange={() => setFilter("small")}
+          />
+          Küçük Duruşlar
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="filter"
+            checked={filter === "all"}
+            onChange={() => setFilter("all")}
+          />
+          Tüm Hat Duruşları
+        </label>
+
+
+      </div>
+      <div>
+        <button className="filter-btn2">Küçük Duruş</button>
+        <button className="filter-btn2">Büyük Duruş</button>
       </div>
 
       <table className="table">
@@ -73,7 +121,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
+          {filteredData.map((row) => (
             <tr key={row.id}>
               <td>
                 <input
@@ -105,9 +153,21 @@ function App() {
         </tbody>
       </table>
 
+      {/* Footer */}
       <footer className="footer">
-        <button className="footer-btn">Bildirim Oluştur</button>
-        <button className="footer-btn">Toplu Neden Girişi</button>
+        {/* Sol taraf: Bildirim ve Toplu Neden Girişi */}
+        <div className="footer-left">
+          <button className="footer-btn">Bildirim Oluştur</button>
+          <button className="footer-btn">Toplu Neden Girişi</button>
+        </div>
+
+        {/* Sağ taraf: Diğer butonlar */}
+        <div className="footer-right">
+          <button className="extra-btn">Ayrıştır</button>
+          <button className="extra-btn">Rapor Yukarı</button>
+          <button className="extra-btn">Düzenle</button>
+          <button className="highlight-btn">Yeni Bildirim</button>
+        </div>
       </footer>
     </div>
   );

@@ -30,7 +30,16 @@
 .filters {
   margin-top: 20px;
   display: flex;
-  gap: 10px;
+  gap: 20px;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+}
+
+.filters input[type="radio"] {
+  margin-right: 10px;
 }
 
 .filter-btn {
@@ -72,10 +81,55 @@
   background-color: #218838;
 }
 
-.footer {
+.footer2 {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+}
+
+.footer-btn2{
+  padding: 10px 20px;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footer-btn2:hover {
+  background-color: #138496;
+}
+
+.filter-btn2 {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.filter-btn2:hover {
+  background-color: #0056b3;
+}
+
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f4f4f4;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between; /* Sol ve sağdaki butonları ayırır */
+  border-top: 1px solid #ccc;
+}
+
+.footer-left, .footer-right {
+  display: flex;
+  gap: 15px;
 }
 
 .footer-btn {
@@ -89,4 +143,22 @@
 
 .footer-btn:hover {
   background-color: #138496;
+}
+
+.footer .extra-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.footer .extra-btn:hover {
+  background-color: #5a6268;
+}
+
+.footer .highlight-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.footer .highlight-btn:hover {
+  background-color: #218838;
 }
