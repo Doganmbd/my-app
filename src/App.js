@@ -5,6 +5,7 @@ import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
 import "react-datepicker/dist/react-datepicker.css";
 import PopUpDetails  from "./components/PopUpDetails";
+import EditPopup  from "./components/EditPopup";
 
 
 function App() {
@@ -230,7 +231,7 @@ function App() {
                   <td>{row.reasonCode}</td>
                   <td>{row.responsible}</td>
                   <td>      
-                    {/* Pop-up açan buton */}
+                    {/*Ayrıntı Pop-up ını açan buton */}
                   <PopUpDetails />
                   </td>
                   <td>
@@ -285,7 +286,7 @@ function App() {
         <div className="footer-right">
           <button className="extra-btn">Ayrıştır</button>
           <button className="extra-btn">Rapor Yukarı</button>
-          <button className="extra-btn">Düzenle</button>
+          <button className="extra-btn">{<EditPopup />}</button>
           <button className="highlight-btn">Yeni Bildirim</button>
         </div>
       </footer>
