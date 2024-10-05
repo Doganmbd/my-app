@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./App.css"; // Make sure to style the modal appropriately
+import "./App.css"; // Make sure to style the modal appropriately;
+import DatePicker from "react-datepicker";
+import { saveAs } from "file-saver";
+import * as XLSX from "xlsx";
+import "react-datepicker/dist/react-datepicker.css";
+import PopUpDetails  from "./components/PopUpDetails";
+
 
 function App() {
   const [currentTime, setCurrentTime] = useState("");
@@ -7,6 +13,24 @@ function App() {
   const [filter, setFilter] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const [isModalOpenVar, setIsModalOpenVar] = useState(false); // Modal state
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  // Sample data to export as Excel
+  const dataTime = [
+    { id: 1, name: "Sample 1", value: "Value 1" },
+    { id: 2, name: "Sample 2", value: "Value 2" },
+  ];
+
+  // Handle Excel Export
+  const handleExcelExport = () => {
+    const ws = XLSX.utils.json_to_sheet(dataTime);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const blob = new Blob([excelBuffer], { type: "application/octet-stream" });
+    saveAs(blob, "export.xlsx");
+  };
 
   // Function to update the time every second
   useEffect(() => {
@@ -99,6 +123,10 @@ function App() {
         <input type="text" placeholder="Arama" className="search-bar" />
       </div>
 
+
+
+
+
       {/* Filter Section */}
       <div className="filters">
         <label>
@@ -122,9 +150,41 @@ function App() {
       </div>
 
       {/* Filter Buttons */}
-      <div>
+      <div className="time-display">
         <button className="filter-btn2">Küçük Duruş</button>
         <button className="filter-btn2">Büyük Duruş</button>
+              {/* Date Range Picker */}
+      <div className="date-range-picker">
+        <label>Tarih :</label>
+        <DatePicker
+          selected={startDate}
+          onChange={(dates) => {
+            const [start, end] = dates;
+            setStartDate(start);
+            setEndDate(end);
+          }}
+          startDate={startDate}
+          endDate={endDate}
+          selectsRange
+          dateFormat="dd.MM.yyyy"
+          placeholderText="dd.MM.yyyy - dd.MM.yyyy"
+          isClearable
+        />
+      </div>
+            {/* Excel Export Button */}
+            <div className="export-button">
+        <button onClick={handleExcelExport}>Excel</button>
+      </div>
+
+      {/* Optional: Display selected dates */}
+      {startDate && endDate && (
+        <div>
+          <p>
+            Selected Dates: {startDate.toLocaleDateString()} -{" "}
+            {endDate.toLocaleDateString()}
+          </p>
+        </div>
+      )}
       </div>
 
       {/* Data Table */}
@@ -145,6 +205,8 @@ function App() {
             <th>Açıklama</th>
           </tr>
         </thead>
+
+
         <tbody>
           {filteredData.map((row) => (
             <tr key={row.id}>
@@ -167,7 +229,10 @@ function App() {
                   <td>{row.type}</td>
                   <td>{row.reasonCode}</td>
                   <td>{row.responsible}</td>
-                  <td>{row.details}</td>
+                  <td>      
+                    {/* Pop-up açan buton */}
+                  <PopUpDetails />
+                  </td>
                   <td>
                     <button className="action-btn">{row.explanation}</button>
                   </td>
@@ -195,7 +260,7 @@ function App() {
         </div>
       )}
 
-{isModalOpenVar && (
+      {isModalOpenVar && (
         <div className="modal-overlay">
           <div className="modal">
             <h2>Vardiya Seç</h2>
@@ -228,4 +293,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;
