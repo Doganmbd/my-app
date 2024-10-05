@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "./App.css"; // Make sure to style the modal appropriately
 
 function App() {
-  // State to hold the current time
   const [currentTime, setCurrentTime] = useState("");
-  const [selectedId, setSelectedId] = useState(null); // State to track selected MII Duruş ID
-  const [filter, setFilter] = useState("all"); // State for filter: 'all' or 'small'
+  const [selectedId, setSelectedId] = useState(null);
+  const [filter, setFilter] = useState("all");
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+  const [isModalOpenVar, setIsModalOpenVar] = useState(false); // Modal state
 
   // Function to update the time every second
   useEffect(() => {
@@ -14,7 +15,6 @@ function App() {
       setCurrentTime(now.toLocaleTimeString());
     }, 1000);
 
-    // Cleanup timer on component unmount
     return () => clearInterval(timer);
   }, []);
 
@@ -53,13 +53,31 @@ function App() {
     setSelectedId(id);
   };
 
+  // Function to handle modal opening
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  // Function to handle modal closing
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  // Function to handle modal opening
+  const openModalVar = () => {
+    setIsModalOpenVar(true);
+  };
+
+  // Function to handle modal closing
+  const closeModalVar = () => {
+    setIsModalOpenVar(false);
+  };
+
   // Filter data based on selection
   const filteredData = data.filter((row) => {
     if (filter === "small") {
-      // Convert duration from string to total seconds
       const [hours, minutes, seconds] = row.duration.split(":").map(Number);
       const totalSeconds = hours * 3600 + minutes * 60 + seconds;
-      return totalSeconds < 600; // less than 10 minutes
+      return totalSeconds < 600;
     }
     return true;
   });
@@ -68,19 +86,21 @@ function App() {
     <div className="app-container">
       <header className="header">
         <h1>Durus Ekranı</h1>
-        </header>
-      <div  className="time-display">
-      <button >Çalışma Birimi</button>
-      <button >Vardiya</button>
-      <div>{currentTime}</div> {/* Adding time display */}
+      </header>
+
+      <div className="time-display">
+        <button onClick={openModal}>Çalışma Birimi</button>
+        <button onClick={openModalVar}>Vardiya</button>
+        <div>{currentTime}</div> {/* Time display */}
       </div>
 
+      {/* Search Section */}
       <div className="search-section">
         <input type="text" placeholder="Arama" className="search-bar" />
       </div>
 
+      {/* Filter Section */}
       <div className="filters">
-
         <label>
           <input
             type="radio"
@@ -99,18 +119,19 @@ function App() {
           />
           Tüm Hat Duruşları
         </label>
-
-
       </div>
+
+      {/* Filter Buttons */}
       <div>
         <button className="filter-btn2">Küçük Duruş</button>
         <button className="filter-btn2">Büyük Duruş</button>
       </div>
 
+      {/* Data Table */}
       <table className="table">
         <thead>
           <tr>
-            <th>Seç</th> {/* Adding a column for radio button */}
+            <th>Seç</th>
             <th>MII Duruş ID</th>
             <th>Çalışma birimi</th>
             <th>Başlangıç zamanı</th>
@@ -136,7 +157,7 @@ function App() {
                 />
               </td>
               <td>{row.id}</td>
-              {selectedId === row.id && ( // Only display full row details if this row is selected
+              {selectedId === row.id && (
                 <>
                   <td>{row.workingUnit}</td>
                   <td>{row.startTime}</td>
@@ -157,15 +178,45 @@ function App() {
         </tbody>
       </table>
 
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Çalışma Birimi Seç</h2>
+            <input type="text" placeholder="Arama" className="search-bar" />
+            <ul className="modal-list">
+              {/* Replace with real data */}
+              <li>AKR-KP AKRILIK KAPLAMA (10000108)</li>
+              <li>CHİPPER DISC-1 (10000143)</li>
+              <li>FORMALDEHİT TESİSİ -1 (10000037)</li>
+            </ul>
+            <button onClick={closeModal}>Cancel</button>
+          </div>
+        </div>
+      )}
+
+{isModalOpenVar && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Vardiya Seç</h2>
+            <input type="text" placeholder="Arama" className="search-bar" />
+            <ul className="modal-list">
+              {/* Replace with real data */}
+              <li>08:00 - 16: 00 </li>
+              <li>16:00 - 24:00 </li>
+              <li>24:00 - 08:00 </li>
+            </ul>
+            <button onClick={closeModalVar}>Cancel</button>
+          </div>
+        </div>
+      )}
+
       {/* Footer */}
       <footer className="footer">
-        {/* Sol taraf: Bildirim ve Toplu Neden Girişi */}
         <div className="footer-left">
           <button className="footer-btn">Bildirim Oluştur</button>
           <button className="footer-btn">Toplu Neden Girişi</button>
         </div>
-
-        {/* Sağ taraf: Diğer butonlar */}
         <div className="footer-right">
           <button className="extra-btn">Ayrıştır</button>
           <button className="extra-btn">Rapor Yukarı</button>
@@ -177,4 +228,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;
