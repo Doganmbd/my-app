@@ -6,6 +6,7 @@ import * as XLSX from "xlsx";
 import "react-datepicker/dist/react-datepicker.css";
 import PopUpDetails  from "./components/PopUpDetails";
 import EditPopup  from "./components/EditPopup";
+import NotificationForm  from "./components/NotificationForm";
 
 
 function App() {
@@ -280,7 +281,7 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <div className="footer-left">
-          <button className="footer-btn">Bildirim Oluştur</button>
+          <button className="footer-btn">{<NotificationForm />}</button>
           <button className="footer-btn">Toplu Neden Girişi</button>
         </div>
         <div className="footer-right">
