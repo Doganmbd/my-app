@@ -67,9 +67,13 @@ function App() {
   return (
     <div className="app-container">
       <header className="header">
-        <h1>Durus Ekrani</h1>
-        <div className="time-display">{currentTime}</div> {/* Adding time display */}
-      </header>
+        <h1>Durus Ekranı</h1>
+        </header>
+      <div  className="time-display">
+      <button >Çalışma Birimi</button>
+      <button >Vardiya</button>
+      <div>{currentTime}</div> {/* Adding time display */}
+      </div>
 
       <div className="search-section">
         <input type="text" placeholder="Arama" className="search-bar" />
