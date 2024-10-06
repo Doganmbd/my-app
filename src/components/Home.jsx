@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Modal, Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "../App.css";
 import { data } from "../helpers/data";
 import NotificationForm from "../components/NotificationForm";
 import EditPopup from "../components/EditPopup";
 import DatePickers from "./DatePickers";
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css"; 
 
 import PopUpDetails  from "../components/PopUpDetails";
 import ExcelData from "./ExcelData";
@@ -26,9 +30,8 @@ function Home() {
     }); 
 
 
-
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
-  const [isModalOpenVar, setIsModalOpenVar] = useState(false); // Modal state
+/*     const [isModalOpen, setIsModalOpen] = useState(false); // Çalışma Birimi modal state'i
+    const [isModalOpenVar, setIsModalOpenVar] = useState(false); // Vardiya modal state'i */
 
   // Function to update the time every second
   useEffect(() => {
@@ -40,25 +43,46 @@ function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  // Function to handle modal opening
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  const [showWorkUnitModal, setShowWorkUnitModal] = useState(false);
+  const [showShiftModal, setShowShiftModal] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date()); // Seçilen tarih
+  const [searchTerm, setSearchTerm] = useState(""); // Arama terimi
 
-  // Function to handle modal closing
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const handleWorkUnitClose = () => setShowWorkUnitModal(false);
+  const handleWorkUnitShow = () => setShowWorkUnitModal(true);
+  
+  const handleShiftClose = () => setShowShiftModal(false);
+  const handleShiftShow = () => setShowShiftModal(true);
 
-  // Function to handle modal closing
-  const closeModalVar = () => {
-    setIsModalOpenVar(false);
-  };
+    // Çalışma birimleri (örnek veriler)
+    const workUnits = [
+      "AKR-KP AKRILIK KAPLAMA (10000108)",
+      "CHİPPER DISC-1 (10000143)",
+      "FORMALDEHİT TESİSİ -1 (10000037)"
+    ];
+  
+    // Arama terimine göre filtreleme
+    const filteredWorkUnits = workUnits.filter(unit =>
+      unit.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-  // Function to handle modal opening
-  const openModalVar = () => {
-    setIsModalOpenVar(true);
-  };
+  // Modal açma fonksiyonları
+  // const openModal = () => setIsModalOpen(true);
+   //const openModalVar = () => setIsModalOpenVar(true);
+
+    // Modal kapama fonksiyonları
+    // const closeModal = () => setIsModalOpen(false);
+    // const closeModalVar = () => setIsModalOpenVar(false);
+
+
+    // useEffect(() => {
+      // Modal açıldığında body'e scroll'u kapatan sınıfı ekliyoruz
+     //  if (isModalOpen || isModalOpenVar) {
+     //    document.body.classList.add("modal-open");
+     //  } else {
+     //    document.body.classList.remove("modal-open");
+    //   }
+   //  }, [isModalOpen, isModalOpenVar]);
 
   // Function to handle radio button selection
   const handleSelection = (id) => {
@@ -78,8 +102,10 @@ function Home() {
       </header>
 
       <div className="time-display">
-        <button onClick={openModal}>Çalışma Birimi</button>
-        <button onClick={openModalVar}>Vardiya</button>
+{/*       <button onClick={openModal}>Çalışma Birimi</button>
+      <button onClick={openModalVar}>Vardiya</button> */}
+              <Button variant="secondary" onClick={handleWorkUnitShow}>Çalışma Birimi</Button>
+              <Button variant="secondary" onClick={handleShiftShow}>Vardiya</Button>
         <div>{currentTime}</div> {/* Time display */}
       </div>
 
@@ -221,38 +247,88 @@ function Home() {
         </tbody>
       </table>
 
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal">
+      {/* Çalışma Birimi Modal */}
+{/*       {isModalOpen && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
             <h2>Çalışma Birimi Seç</h2>
-            <input type="text" placeholder="Arama" className="search-bar" />
             <ul className="modal-list">
-              {/* Replace with real data */}
               <li>AKR-KP AKRILIK KAPLAMA (10000108)</li>
               <li>CHİPPER DISC-1 (10000143)</li>
               <li>FORMALDEHİT TESİSİ -1 (10000037)</li>
             </ul>
-            <button onClick={closeModal}>Cancel</button>
+            <button onClick={closeModal}>Kapat</button>
           </div>
         </div>
-      )}
+      )} */}
 
-      {isModalOpenVar && (
-        <div className="modal-overlay">
-          <div className="modal">
+      {/* Vardiya Modal */}
+   {/*    {isModalOpenVar && (
+        <div className="modal-overlay" onClick={closeModalVar}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
             <h2>Vardiya Seç</h2>
-            <input type="text" placeholder="Arama" className="search-bar" />
             <ul className="modal-list">
-              {/* Replace with real data */}
-              <li>08:00 - 16: 00 </li>
-              <li>16:00 - 24:00 </li>
-              <li>24:00 - 08:00 </li>
+              <li>08:00 - 16:00</li>
+              <li>16:00 - 24:00</li>
+              <li>24:00 - 08:00</li>
             </ul>
-            <button onClick={closeModalVar}>Cancel</button>
+            <button onClick={closeModalVar}>Kapat</button>
           </div>
         </div>
-      )}
+      )} */}
+
+
+
+
+       {/* Çalışma Birimi Modal */}
+       <Modal show={showWorkUnitModal} onHide={handleWorkUnitClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Çalışma Birimi Seç</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <input
+            type="text"
+            placeholder="Arama..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="form-control mb-2"
+          />
+          <ul className="modal-list">
+            {filteredWorkUnits.map((unit, index) => (
+              <li key={index}>{unit}</li>
+            ))}
+          </ul>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleWorkUnitClose}>Kapat</Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Vardiya Modal */}
+      <Modal show={showShiftModal} onHide={handleShiftClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Vardiya Seç</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div>
+
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              dateFormat="dd/MM/yyyy"
+              className="form-control"
+            />
+          </div>
+          <ul className="modal-list">
+            <li>08:00 - 16:00</li>
+            <li>16:00 - 24:00</li>
+            <li>24:00 - 08:00</li>
+          </ul>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleShiftClose}>Kapat</Button>
+        </Modal.Footer>
+      </Modal>
 
       {/* Footer */}
       <footer className="footer">
