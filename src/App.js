@@ -6,6 +6,7 @@ function App() {
 
   return (
     <div className="app-container">
+      {/* tüm componenetleri buraya getir */}
 
       {/* taloyu getirdim */}
       <Home />
