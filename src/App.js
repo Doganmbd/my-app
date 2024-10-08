@@ -9,6 +9,8 @@ function App() {
       {/* tüm componenetleri buraya getir */}
 
       {/* taloyu getirdim */}
+
+      
       <Home />
     </div>
   );
