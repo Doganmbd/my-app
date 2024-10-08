@@ -13,13 +13,13 @@ import PopUpDetails  from "../components/PopUpDetails";
 import ExcelData from "./ExcelData";
 
 function Home() {
-  // State to hold the current time
+  // Geçerli saati state durum
   const [currentTime, setCurrentTime] = useState("");
-  const [selectedId, setSelectedId] = useState(null); // State to track selected MII Duruş ID
+  const [selectedId, setSelectedId] = useState(null); // Seçili MII Duruş ID'nin izleneceği durum
 
 
   const [filter, setFilter] = useState("all");
-  // Filter data based on selection
+  // Seçime dayalı olarak verileri filtreleme
     const filteredData = data.filter((row) => {
       if (filter === "small") {
         const [hours, minutes, seconds] = row.duration.split(":").map(Number);
@@ -33,13 +33,13 @@ function Home() {
 /*     const [isModalOpen, setIsModalOpen] = useState(false); // Çalışma Birimi modal state'i
     const [isModalOpenVar, setIsModalOpenVar] = useState(false); // Vardiya modal state'i */
 
-  // Function to update the time every second
+  // Saati her saniye güncelleme işlevi
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
       setCurrentTime(now.toLocaleTimeString());
     }, 1000);
-    // Cleanup timer on component unmount
+    // Bileşenin bağlantısının kesilmesi sırasında temizleme zamanlayıcısı
     return () => clearInterval(timer);
   }, []);
 
@@ -84,7 +84,7 @@ function Home() {
     //   }
    //  }, [isModalOpen, isModalOpenVar]);
 
-  // Function to handle radio button selection
+  // Radia button seçimini yönetme işlevi
   const handleSelection = (id) => {
     setSelectedId(id);
   };
@@ -109,7 +109,7 @@ function Home() {
         <div>{currentTime}</div> {/* Time display */}
       </div>
 
-      {/* Search Section */}
+      {/* Search alanı */}
       <div className="search-section">
         <input type="text" placeholder="Arama" className="search-bar" />
       </div>
@@ -148,7 +148,7 @@ function Home() {
       <table className="table">
         <thead>
           <tr>
-            <th>Seç</th> {/* Adding a column for radio button */}
+            <th>Seç</th> 
             <th>MII Duruş ID</th>
             <th>Çalışma birimi</th>
             <th>Başlangıç zamanı</th>

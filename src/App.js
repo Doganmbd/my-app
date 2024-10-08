@@ -7,8 +7,8 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* taloyu getirdim */}
 
+      {/* taloyu getirdim */}
       <Home />
     </div>
   );

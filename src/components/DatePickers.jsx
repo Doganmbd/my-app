@@ -24,7 +24,8 @@ function DatePickers() {
         placeholderText="dd.MM.yyyy - dd.MM.yyyy"
         isClearable
       />
-    {/*   {startDate && endDate && (
+    {/* örnek tarih 
+      {startDate && endDate && (
         <div>
           <p>
             Selected Dates: {startDate.toLocaleDateString()} -{" "}

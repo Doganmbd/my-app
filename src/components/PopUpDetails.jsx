@@ -18,6 +18,7 @@ function PopUpDetails() {
   return (
     <div className="details-button">
       {/* Pop-up açacak buton */}
+      
       <OverlayTrigger trigger="click" placement="left" overlay={popover}>
         <Button variant="info">Ayrıntı</Button>
       </OverlayTrigger>

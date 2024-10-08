@@ -5,13 +5,13 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 
 function ExcelData() {
-  // Sample data to export as Excel
+  // Basit örnek yazdım
   const dataTime = [
     { id: 1, name: "Sample 1", value: "Value 1" },
     { id: 2, name: "Sample 2", value: "Value 2" },
   ];
 
-  // Handle Excel Export
+  // Excel i export ettim
   const handleExcelExport = () => {
     const ws = XLSX.utils.json_to_sheet(dataTime);
     const wb = XLSX.utils.book_new();
@@ -23,7 +23,7 @@ function ExcelData() {
 
   return (
     <div className="time-display">
-      {/* Excel Export Button */}
+      {/* Excel Export Buttonu */}
       <div className="export-button">
         <button onClick={handleExcelExport}>Excel</button>
       </div>

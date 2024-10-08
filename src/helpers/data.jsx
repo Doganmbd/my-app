@@ -1,4 +1,4 @@
-/*  basit bir data yazdım */
+/*  basit bir data yazdımmm*/
 
 export const data = [
     {

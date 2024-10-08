@@ -9,7 +9,8 @@ function EditPopup() {
 
   return (
     <>
-    {/* variant="primary" 
+    {/* 
+     variant="primary" 
     style={{ backgroundColor: 'transparent', border: 'none', color: 'inherit' }} 
      */}
       <Button variant="secondary"  onClick={handleShow}>
