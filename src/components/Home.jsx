@@ -8,6 +8,8 @@ import EditPopup from "../components/EditPopup";
 import DatePickers from "./DatePickers";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileExcel } from '@fortawesome/free-solid-svg-icons'; 
 
 import PopUpDetails  from "../components/PopUpDetails";
 import ExcelData from "./ExcelData";
@@ -140,13 +142,15 @@ function Home() {
 
       <div className="time-display">
         <button className="filter-btn2">Küçük Duruş</button>
-        <button className="filter-btn2">Büyük Duruş</button>
+        <button className="filter-btn2">   Büyük Duruş</button>
         {<DatePickers />}
-        {<ExcelData />}
+        {<ExcelData  /> }
       </div>
 
-      <table className="table">
-        <thead>
+
+{/* Radiobuttona basınca verilerin gelmesi */}
+    {/*   <table /* className="table" > */}
+   {/* 11111     <thead>
           <tr>
             <th>Seç</th> 
             <th>MII Duruş ID</th>
@@ -185,15 +189,19 @@ function Home() {
                   <td>{row.type}</td>
                   <td>{row.reasonCode}</td>
                   <td>{row.responsible}</td>
-                  <td>      
+                  <td>    */}   
                     {/*Ayrıntı Pop-up ını açan buton */}
-                  <PopUpDetails />
+{/*   2222                <PopUpDetails />
                   </td>
                   <td>
                     <button className="action-btn">{row.explanation}</button>
                   </td>
                 </>
-              )}
+              )} */}
+
+
+
+              
 
 {/*         <tbody>
           {data.map((row) => (
@@ -242,10 +250,67 @@ function Home() {
                   </td>
                 </>
               )} */}
-            </tr>
+
+
+
+{/* 333            </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
+
+
+
+<table /* className="table" */>
+  <thead>
+    <tr>
+      <th>Seç</th> 
+      <th>MII Duruş ID</th>
+      <th>Çalışma birimi</th>
+      <th>Başlangıç zamanı</th>
+      <th>Bitiş zamanı</th>
+      <th>Süre</th>
+      <th>Sipariş No</th>
+      <th>Tip</th>
+      <th>Neden kodu</th>
+      <th>Neden olan</th>
+      <th>Ayrıntılar</th>
+      <th>Açıklama</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {filteredData.map((row) => (
+      <tr key={row.id} onClick={() => handleSelection(row.id)} style={{ cursor: 'pointer' }}>
+        <td>
+          <input
+            type="radio"
+            name="selection"
+            checked={selectedId === row.id}
+            onChange={() => handleSelection(row.id)}
+          />
+        </td>
+        <td>{row.id}</td>
+        <td>{row.workingUnit}</td>
+        <td>{row.startTime}</td>
+        <td>{row.endTime}</td>
+        <td>{row.duration}</td>
+        <td>{row.orderNo}</td>
+        <td>{row.type}</td>
+        <td>{row.reasonCode}</td>
+        <td>{row.responsible}</td>
+        <td>      
+          {/* Ayrıntı Pop-up ını açan buton */}
+          <PopUpDetails />
+        </td>
+        <td>
+          <button className="action-btn">{row.explanation}</button>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+
 
       {/* Çalışma Birimi Modal */}
 {/*       {isModalOpen && (
