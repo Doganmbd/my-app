@@ -47,6 +47,7 @@ tbody tr:nth-child(even) {
 /* Satırların üzerine gelindiğinde vurgulama */
 tbody tr:hover {
   background-color: #E9ECEF; /* Hover efekti */
+  transform: scale(1.01); /* Hafif büyütme efekti */
 }
 
 
@@ -124,6 +125,7 @@ tbody tr:hover {
 
 .filter-btn:hover {
   background-color: #0056b3;
+  transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
 /* .table {
@@ -150,6 +152,7 @@ tbody tr:hover {
 
 .action-btn:hover {
   background-color: #218838;
+  transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
 .footer2 {
@@ -169,6 +172,7 @@ tbody tr:hover {
 
 .footer-btn2:hover {
   background-color: #138496;
+  transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
 .filter-btn2 {
@@ -183,6 +187,7 @@ tbody tr:hover {
 
 .filter-btn2:hover {
   background-color: #0056b3;
+  transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
 
@@ -214,6 +219,7 @@ tbody tr:hover {
 
 .footer-btn:hover {
   background-color: #138496;
+  transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
 .footer .extra-btn {
@@ -223,6 +229,7 @@ tbody tr:hover {
 
 .footer .extra-btn:hover {
   background-color: #5a6268;
+  transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
 .footer .highlight-btn {
@@ -232,6 +239,7 @@ tbody tr:hover {
 
 .footer .highlight-btn:hover {
   background-color: #218838;
+  transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
  .modal-overlay {
@@ -283,6 +291,7 @@ tbody tr:hover {
 
 .modal-list li:hover {
   background-color: #f0f0f0;
+ 
 }
 
 body.modal-open {
@@ -313,4 +322,5 @@ body.modal-open {
 
 .export-button button:hover {
   background-color: #0056b3;
+  transform: scale(1.05); /* Hafif büyütme efekti */
 }
