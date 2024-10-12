@@ -1,5 +1,70 @@
+button {
+  background-color: #1f548d; /* Ana renk */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+h1 {
+  color: #007BFF; /* Ana renkte büyük başlık */
+  font-size: 24px;
+}
+
+
+/* Zebra desenli tablo */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-align: left;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #E9ECEF; /* İnce sınır çizgisi */
+}
+
+th {
+  background-color: #343a40; /* Başlık için koyu renk */
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px; /* Daha büyük yazı fontu */
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #F2F2F2; /* Zebra deseni için açık gri */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #FFFFFF; /* Zebra deseni için beyaz */
+}
+
+/* Satırların üzerine gelindiğinde vurgulama */
+tbody tr:hover {
+  background-color: #E9ECEF; /* Hover efekti */
+}
+
+
+
+
+
+/* input, select {
+  padding: 10px;
+  border: 1px solid #E9ECEF;
+  border-radius: 5px;
+  width: 100%;
+}
+ */
+
 .app-container {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif; /* Modern bir yazı tipi */
+  background-color: #F8F9FA; /* Arka plan */
+  color: #212529; /* Metin rengi */
   margin: 20px;
 }
 
@@ -61,7 +126,7 @@
   background-color: #0056b3;
 }
 
-.table {
+/* .table {
   margin-top: 20px;
   width: 100%;
   border-collapse: collapse;
@@ -72,7 +137,7 @@
   border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
-}
+} */
 
 .action-btn {
   background-color: #28a745;
@@ -108,7 +173,7 @@
 
 .filter-btn2 {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #2f69a8;
   color: white;
   border: none;
   border-radius: 5px;

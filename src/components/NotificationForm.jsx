@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 
+
 function NotificationForm() {
   const [show, setShow] = useState(false);
 
@@ -8,9 +9,18 @@ function NotificationForm() {
   const handleShow = () => setShow(true);
 
   return (
-    <>
+    <div  >
 
-      <Button variant="primary" onClick={handleShow}>
+      <Button       style={{
+       backgroundColor:"#17a2b8",
+  padding: "10px 20px",
+ 
+  color: "white",
+  border:"none",
+  borderRadius: "5px",
+  cursor:"pointer",
+      }}
+        onClick={handleShow}>
         Bildirim Oluştur
         
       </Button>
@@ -92,7 +102,7 @@ function NotificationForm() {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 }
 
