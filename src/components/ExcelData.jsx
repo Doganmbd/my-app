@@ -1,5 +1,7 @@
 import React from "react";
 import "../App.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileExcel } from '@fortawesome/free-solid-svg-icons'; 
 
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
@@ -25,7 +27,7 @@ function ExcelData() {
     <div className="time-display">
       {/* Excel Export Buttonu */}
       <div className="export-button">
-        <button onClick={handleExcelExport}>Excel</button>
+        <button onClick={handleExcelExport}><FontAwesomeIcon icon={faFileExcel} /> Excel</button>
       </div>
     </div>
   );
