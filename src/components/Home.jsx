@@ -8,13 +8,14 @@ import EditPopup from "../components/EditPopup";
 import DatePickers from "./DatePickers";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"; 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileExcel } from '@fortawesome/free-solid-svg-icons'; 
+/* import { motion } from 'framer-motion';  */
 
 import PopUpDetails  from "../components/PopUpDetails";
 import ExcelData from "./ExcelData";
 
 function Home() {
+  /* Animasyonlu geçiş */
+
   // Geçerli saati state durum
   const [currentTime, setCurrentTime] = useState("");
   const [selectedId, setSelectedId] = useState(null); // Seçili MII Duruş ID'nin izleneceği durum
@@ -97,6 +98,13 @@ function Home() {
 
 
   return (
+    /* animasyonlu geçiş */
+/*     <motion.div 
+    initial={{ opacity: 0 }} 
+    animate={{ opacity: 1 }} 
+    transition={{ duration: 0.5 }} 
+    className="container"
+  > */
     <div className="app-container">
       <header className="header">
         <h1>Durus Ekranı</h1>
@@ -409,6 +417,7 @@ function Home() {
         </div>
       </footer>
     </div>
+   /*  </motion.div> */
   );
 }
 
