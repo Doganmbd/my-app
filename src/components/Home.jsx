@@ -13,7 +13,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import PopUpDetails  from "../components/PopUpDetails";
 import ExcelData from "./ExcelData";
 
+
+
+import HamburgerMenu from "./HamburgerMenu"; 
+
 function Home() {
+  const userName = "Mustafa Bilal Doğan"; // Sisteme giren kullanıcı adı
   /* Animasyonlu geçiş */
 
    // Tarih değişiminde tabloyu filtrele
@@ -127,9 +132,12 @@ function Home() {
   return (
 
     <div className="app-container">
-      <header className="header">
+      <header className="header d-flex justify-content-between align-items-center">
         <h1>Durus Ekranı</h1>
         {/*      <div className="time-display">{currentTime}</div> {/* zaman ekleme */}
+               {/* Hamburger Menü ve Log Out Butonu */}
+
+               <HamburgerMenu userName={userName} />
       </header>
 
       <div className="time-display">
