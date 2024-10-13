@@ -568,3 +568,414 @@ body.modal-open {
     text-align: center; /* Metni ortala */
   }
 }
+
+/* Büyük ekranlar için (min-width: 769px) */
+@media (min-width: 769px) {
+
+/* Genel stiller */
+body {
+  font-family: 'Roboto', sans-serif; /* Modern bir yazı tipi */
+  background-color: #F8F9FA; /* Arka plan */
+  color: #212529; /* Metin rengi */
+  margin: 0; /* Varsayılan margin'i kaldır */
+  padding: 0; /* Varsayılan padding'i kaldır */
+}
+
+/* Buton Stilleri */
+button {
+  background-color: #1f548d; /* Ana renk */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Başlık Stili */
+h1 {
+  margin: 0;
+  color: #007BFF; /* Ana renkte büyük başlık */
+  font-size: 24px;
+}
+
+/* Zebra desenli tablo */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-align: left;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #E9ECEF; /* İnce sınır çizgisi */
+  max-width: 100px; /* Hücrelerin maksimum genişliği */
+  overflow: hidden; /* Taşmayı gizle */
+  text-overflow: ellipsis; /* Taşan metni üç nokta ile göster */
+  white-space: nowrap; /* Metnin tek satırda kalmasını sağla */
+  font-size: 20px;
+
+}
+
+th {
+  background-color: #343a40; /* Başlık için koyu renk */
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #F2F2F2; /* Zebra deseni için açık gri */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #FFFFFF; /* Zebra deseni için beyaz */
+}
+
+/* Satırların üzerine gelindiğinde vurgulama */
+tbody tr:hover {
+  background-color: #E9ECEF; /* Hover efekti */
+  transform: scale(1.01); /* Hafif büyütme efekti */
+}
+
+/* Uygulama Konteyneri */
+.app-container {
+  margin: 20px;
+  width: 98%;
+}
+
+/* Başlık Stili */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+  padding: 5px;
+}
+
+
+
+
+/* Tarih aralığı seçici stili */
+.date-range-picker {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Label ile tarih seçici arasında boşluk */
+  font-family: 'Roboto', sans-serif; /* Font ailesi */
+  
+}
+
+.date-range-picker label {
+  font-weight: bold;
+  font-size: 20px;
+  color: #343a40;
+}
+
+.react-datepicker-wrapper {
+  width: 100%; /* Tarih seçici genişliği tam olsun */
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #495057;
+  background-color: white;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.react-datepicker__input-container input:focus {
+  border-color: #007bff; /* Odaklandığında mavi sınır */
+}
+
+.react-datepicker__input-container input::placeholder {
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Tarih seçici popup stili */
+.react-datepicker {
+  border: 3px solid #007bff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.react-datepicker__header {
+  background-color: #007bff;
+  border-bottom: 1px solid #0056b3;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: white;
+  font-weight: bold;
+}
+
+.react-datepicker__day:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.react-datepicker__day--selected {
+  background-color: #007bff;
+}
+
+.react-datepicker__day--in-range {
+  background-color: #d9eaff;
+}
+
+.react-datepicker__day--range-start,
+.react-datepicker__day--range-end {
+  background-color: #0056b3;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Zaman Görüntüleme Stili */
+.time-display {
+  padding-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.time-displays {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Arama kısmı */
+.search-section {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.search-bar {
+  padding: 3px;
+  font-size: 15px;
+  margin: 5px;
+  width: 98%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Filtre Stili */
+.filters {
+  margin-top: 10px;
+  display: flex;
+  gap: 20px;
+}
+
+.filters label {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.filters input[type="radio"] {
+  margin-right: 10px;
+  
+}
+
+/* Filtre Butonu Stili */
+.filter-btn {
+  padding: 10px;
+  font-size: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Hafif büyütme efekti */
+}
+
+/* Aksiyon Butonu Stili */
+.action-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.action-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05); /* Hafif büyütme efekti */
+}
+
+/* Footer Stili */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f4f4f4;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between; /* Sol ve sağdaki butonları ayırır */
+  border-top: 1px solid #ccc;
+  box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1); /* Üstte gölge efekti */
+}
+
+.footer-left, .footer-right {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; /* Taşmasını önlemek için */
+}
+
+.footer-btn {
+  padding: 5px;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.footer-btn:hover {
+  background-color: #138496;
+  transform: scale(1.05); /* Hafif büyütme efekti */
+}
+
+/* Ekstra ve Vurgulu Butonlar */
+.footer .extra-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.footer .extra-btn:hover {
+  background-color: #5a6268;
+  transform: scale(1.05); /* Hafif büyütme efekti */
+}
+
+.footer .highlight-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.footer .highlight-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05); /* Hafif büyütme efekti */
+}
+
+/* Modal Stili */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1001; /* Modal'ın üstte kalmasını sağlamak */
+}
+
+/* Modal Listesi */
+.modal-list {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.modal-list li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Body durumunu modal açıkken ayarlayın */
+body.modal-open {
+  overflow: hidden; /* Modal açıkken body scroll'u kapat */
+}
+
+/* Tarih aralığı seçici stili */
+.date-range-picker {
+  display: flex;
+  align-items: center;
+}
+
+.date-range-picker label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* Export Butonu Stili */
+.export-button {
+  margin-left: 20px;
+}
+
+.export-button button {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.export-button button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Hafif büyütme efekti */
+}
+}
