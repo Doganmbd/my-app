@@ -24,7 +24,7 @@ function ExcelData() {
   };
 
   return (
-    <div className="time-display">
+    <div className="time-displays">
       {/* Excel Export Buttonu */}
       <div className="export-button">
         <button onClick={handleExcelExport}><FontAwesomeIcon icon={faFileExcel} /> Excel</button>

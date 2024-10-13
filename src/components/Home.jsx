@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import { data } from "../helpers/data";
 import NotificationForm from "../components/NotificationForm";
 import EditPopup from "../components/EditPopup";
 import DatePickers from "./DatePickers";
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css"; 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 /* import { motion } from 'framer-motion';  */
 
-import PopUpDetails  from "../components/PopUpDetails";
+import PopUpDetails from "../components/PopUpDetails";
 import ExcelData from "./ExcelData";
 
-
-
-import HamburgerMenu from "./HamburgerMenu"; 
+import HamburgerMenu from "./HamburgerMenu";
+import agtLogo from "../assets/agt_logo.png";
 
 function Home() {
   const userName = "Mustafa Bilal Doğan"; // Sisteme giren kullanıcı adı
   /* Animasyonlu geçiş */
 
-   // Tarih değişiminde tabloyu filtrele
+  // Tarih değişiminde tabloyu filtrele
 
-   const [filteredData, setFilteredData] = useState(data); // Filtrelenmiş veriler
-   const [selectedDateRange, setSelectedDateRange] = useState([null, null]); // Seçilen tarih aralığı 
-   
-   const handleDateChange = (startDate, endDate) => {
+  const [filteredData, setFilteredData] = useState(data); // Filtrelenmiş veriler
+  const [selectedDateRange, setSelectedDateRange] = useState([null, null]); // Seçilen tarih aralığı
+
+  const handleDateChange = (startDate, endDate) => {
     setSelectedDateRange([startDate, endDate]);
   };
 
@@ -36,8 +35,8 @@ function Home() {
       const [startDate, endDate] = selectedDateRange;
 
       const filtered = data.filter((row) => {
-        const rowDate = new Date(row.startTime);// Satırdaki tarih
-        return rowDate >= startDate && rowDate <= endDate;// Aralıkta mı kontrolü
+        const rowDate = new Date(row.startTime); // Satırdaki tarih
+        return rowDate >= startDate && rowDate <= endDate; // Aralıkta mı kontrolü
       });
 
       setFilteredData(filtered);
@@ -60,7 +59,6 @@ function Home() {
   const [currentTime, setCurrentTime] = useState("");
   const [selectedId, setSelectedId] = useState(null); // Seçili MII Duruş ID'nin izleneceği durum
 
-
   const [filter, setFilter] = useState("all");
   // Seçime dayalı olarak verileri filtreleme
   const filteredRows = filteredData.filter((row) => {
@@ -79,8 +77,7 @@ function Home() {
     setFilter(filterType);
   };
 
-
-/*     const [isModalOpen, setIsModalOpen] = useState(false); // Çalışma Birimi modal state'i
+  /*     const [isModalOpen, setIsModalOpen] = useState(false); // Çalışma Birimi modal state'i
     const [isModalOpenVar, setIsModalOpenVar] = useState(false); // Vardiya modal state'i */
 
   // Saati her saniye güncelleme işlevi
@@ -98,71 +95,88 @@ function Home() {
   const [selectedDate, setSelectedDate] = useState(new Date()); // Seçilen tarih
   const [searchTerm, setSearchTerm] = useState(""); // Arama terimi
 
-
   const handleWorkUnitClose = () => setShowWorkUnitModal(false);
   const handleWorkUnitShow = () => setShowWorkUnitModal(true);
-  
+
   const handleShiftClose = () => setShowShiftModal(false);
   const handleShiftShow = () => setShowShiftModal(true);
 
-    // Çalışma birimleri (örnek veriler)
-    const workUnits = [
-      "AKR-KP AKRILIK KAPLAMA (10000108)",
-      "CHİPPER DISC-1 (10000143)",
-      "FORMALDEHİT TESİSİ -1 (10000037)"
-    ];
-  
-    // Arama terimine göre filtreleme
-    const filteredWorkUnits = workUnits.filter(unit =>
-      unit.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  // Çalışma birimleri (örnek veriler)
+  const workUnits = [
+    "AKR-KP AKRILIK KAPLAMA (10000108)",
+    "CHİPPER DISC-1 (10000143)",
+    "FORMALDEHİT TESİSİ -1 (10000037)",
+  ];
 
-
+  // Arama terimine göre filtreleme
+  const filteredWorkUnits = workUnits.filter((unit) =>
+    unit.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Radia button seçimini yönetme işlevi
   const handleSelection = (id) => {
     setSelectedId(id);
   };
- 
-
-
-
-
 
   return (
-
     <div className="app-container">
-      <header className="header d-flex justify-content-between align-items-center">
+      <footer
+        className="header d-flex justify-content-between align-items-center"
+        style={{ position: "fixed", top: 0, width: "96%", zIndex: 100, backgroundColor: "#fae0e0",padding: "10px 20px", boxShadow: "0 2px 5px gba(0,0,0,0.1)"}}
+      >
+        {/* Logo ve Başlık */}
+        <div className="logo-container d-flex align-items-center">
+          <img
+            src={agtLogo}
+            alt="AGT Logo"
+            className="agt-logo"
+            style={{ width: "90px", height: "70px", marginRight: "10px" }}
+          />
+        </div>
         <h1>Durus Ekranı</h1>
-        {/*      <div className="time-display">{currentTime}</div> {/* zaman ekleme */}
-               {/* Hamburger Menü ve Log Out Butonu */}
 
-               <HamburgerMenu userName={userName} />
-      </header>
+        {/* Hamburger Menü ve Log Out Butonu */}
+        <HamburgerMenu userName={userName} />
+      </footer>
 
       <div className="time-display">
-{/*       <button onClick={openModal}>Çalışma Birimi</button>
+        {/*       <button onClick={openModal}>Çalışma Birimi</button>
       <button onClick={openModalVar}>Vardiya</button> */}
-              <Button variant="secondary" onClick={handleWorkUnitShow}>Çalışma Birimi</Button>
-              <Button variant="secondary" onClick={handleShiftShow}>Vardiya</Button>
-        <div>{currentTime}</div> {/*Saat gösterimi */}
+        <Button variant="secondary" onClick={handleWorkUnitShow}>
+          Çalışma Birimi
+        </Button>
+        <Button variant="secondary" onClick={handleShiftShow}>
+          Vardiya
+        </Button>
+        <Button
+            variant="info" // Butonun rengi
+            style={{
+              borderRadius: "50px", // Daire biçimi
+              padding: "10px 20px", // İçerik için padding
+              fontSize: "1.2rem", // Yazı boyutu
+              fontWeight: "bold", // Yazı kalınlığı
+              margin: "0 10px", // Kenar boşluğu
+            }}
+          >
+            {currentTime}
+          </Button>
       </div>
 
       {/* Search alanı */}
       <div className="search-section">
-        <input 
-        type="text" 
-        placeholder="Arama" 
-        className="search-bar"
-        value={searchMain}
-        onChange={handleSearchInput} // Arama inputu değiştiğinde filtrele
- />
+        <input
+          type="text"
+          placeholder="Arama"
+          className="search-bar"
+          value={searchMain}
+          onChange={handleSearchInput} // Arama inputu değiştiğinde filtrele
+        />
       </div>
 
       {/* Duruşlar radiobutonları */}
 
-            {/* Filter Section */}
-            <div className="filters">
+      {/* Filter Section */}
+      <div className="filters">
         <label>
           <input
             type="radio"
@@ -183,77 +197,83 @@ function Home() {
         </label>
       </div>
 
-      <div className="time-display">
-        <button onClick={() => handleFilterChange("small")} className="filter-btn2">Küçük Duruş</button>
-        <button onClick={() => handleFilterChange("large")} className="filter-btn2">   Büyük Duruş</button>
-        { <DatePickers onDateChange={handleDateChange} />}
-        {<ExcelData  /> }
+      <div className="time-displays">
+        <button
+          onClick={() => handleFilterChange("small")}
+          className="filter-btn"
+        >
+          Küçük Duruş
+        </button>
+        <button
+          onClick={() => handleFilterChange("large")}
+          className="filter-btn"
+        >
+          {" "}
+          Büyük Duruş
+        </button>
+        {<DatePickers onDateChange={handleDateChange} />}
+     
+        {<ExcelData />}
+  
+        
       </div>
 
+      <table /* className="table" */>
+        <thead>
+          <tr>
+            <th>Seç</th>
+            <th>MII Duruş ID</th>
+            <th>Çalışma birimi</th>
+            <th>Başlangıç zamanı</th>
+            <th>Bitiş zamanı</th>
+            <th>Süre</th>
+            <th>Sipariş No</th>
+            <th>Tip</th>
+            <th>Neden kodu</th>
+            <th>Neden olan</th>
+            <th>Ayrıntılar</th>
+            <th>Açıklama</th>
+          </tr>
+        </thead>
 
+        <tbody>
+          {filteredRows.map((row) => (
+            <tr
+              key={row.id}
+              onClick={() => handleSelection(row.id)}
+              style={{ cursor: "pointer" }}
+            >
+              <td>
+                <input
+                  type="radio"
+                  name="selection"
+                  checked={selectedId === row.id}
+                  onChange={() => handleSelection(row.id)}
+                />
+              </td>
+              <td>{row.id}</td>
+              <td>{row.workingUnit}</td>
+              <td>{row.startTime}</td>
+              <td>{row.endTime}</td>
+              <td>{row.duration}</td>
+              <td>{row.orderNo}</td>
+              <td>{row.type}</td>
+              <td>{row.reasonCode}</td>
+              <td>{row.responsible}</td>
+              <td>
+                {/* Ayrıntı Pop-up ını açan buton */}
+                <PopUpDetails />
+              </td>
+              <td>
+                <button className="action-btn">{row.explanation}</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-
-
-
-<table /* className="table" */>
-  <thead>
-    <tr>
-      <th>Seç</th> 
-      <th>MII Duruş ID</th>
-      <th>Çalışma birimi</th>
-      <th>Başlangıç zamanı</th>
-      <th>Bitiş zamanı</th>
-      <th>Süre</th>
-      <th>Sipariş No</th>
-      <th>Tip</th>
-      <th>Neden kodu</th>
-      <th>Neden olan</th>
-      <th>Ayrıntılar</th>
-      <th>Açıklama</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    {filteredRows.map((row) => (
-      <tr key={row.id} onClick={() => handleSelection(row.id)} style={{ cursor: 'pointer' }}>
-        <td>
-          <input
-            type="radio"
-            name="selection"
-            checked={selectedId === row.id}
-            onChange={() => handleSelection(row.id)}
-          />
-        </td>
-        <td>{row.id}</td>
-        <td>{row.workingUnit}</td>
-        <td>{row.startTime}</td>
-        <td>{row.endTime}</td>
-        <td>{row.duration}</td>
-        <td>{row.orderNo}</td>
-        <td>{row.type}</td>
-        <td>{row.reasonCode}</td>
-        <td>{row.responsible}</td>
-        <td>      
-          {/* Ayrıntı Pop-up ını açan buton */}
-          <PopUpDetails />
-        </td>
-        <td>
-          <button className="action-btn">{row.explanation}</button>
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-
-
-
-
-
-
-
-       {/* Çalışma Birimi Modal */}
-       <Modal show={showWorkUnitModal} onHide={handleWorkUnitClose}>
+      {/* Çalışma Birimi Modal */}
+      <Modal show={showWorkUnitModal} onHide={handleWorkUnitClose}>
         <Modal.Header closeButton>
           <Modal.Title>Çalışma Birimi Seç</Modal.Title>
         </Modal.Header>
@@ -272,7 +292,9 @@ function Home() {
           </ul>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleWorkUnitClose}>Kapat</Button>
+          <Button variant="secondary" onClick={handleWorkUnitClose}>
+            Kapat
+          </Button>
         </Modal.Footer>
       </Modal>
 
@@ -282,8 +304,7 @@ function Home() {
           <Modal.Title>Vardiya Seç</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <div>
-
+          <div>
             <DatePicker
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
@@ -298,7 +319,9 @@ function Home() {
           </ul>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleShiftClose}>Kapat</Button>
+          <Button variant="secondary" onClick={handleShiftClose}>
+            Kapat
+          </Button>
         </Modal.Footer>
       </Modal>
 
@@ -316,7 +339,7 @@ function Home() {
         </div>
       </footer>
     </div>
-   /*  </motion.div> */
+    /*  </motion.div> */
   );
 }
 
