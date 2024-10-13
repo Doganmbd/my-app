@@ -148,7 +148,7 @@ function Home() {
         <Button variant="secondary" onClick={handleShiftShow}>
           Vardiya
         </Button>
-        <Button
+        <Button className="button-time"
             variant="info" // Butonun rengi
             style={{
               borderRadius: "50px", // Daire biçimi

@@ -401,9 +401,15 @@ body.modal-open {
 
 /* Duyarlı Tasarım için Medya Sorguları */
 /* Küçük ekranlar için medya sorgusu (max-width: 480px) */
+
 @media (max-width: 480px) {
   h1 {
     font-size: 18px; /* Daha küçük başlık */
+  }
+
+  .filter-btn {
+    font-size: 10px; /* Daha küçük başlık */
+    width: 20%;
   }
 
   .app-container {
@@ -411,7 +417,7 @@ body.modal-open {
   }
 
   table {
-    font-size: 10px; /* Küçük ekranlar için daha küçük font boyutu */
+    font-size: 5px; /* Küçük ekranlar için daha küçük font boyutu */
     width: 100%; /* Tablonun tam genişlikte olmasını sağla */
   }
 
@@ -449,7 +455,7 @@ body.modal-open {
     max-width: 45%; /* Buton genişliğini sınırlamak için */
     text-align: center; /* Metni ortala */
   }
-
+}
 
 /* Orta boy ekranlar için (max-width: 768px) */
 @media (max-width: 768px) {
@@ -457,6 +463,10 @@ body.modal-open {
     font-size: 20px; /* Daha küçük ekranlar için başlık boyutunu azalt */
   }
 
+  .filter-btn {
+    font-size: 10px; /* Daha küçük başlık */
+    width: 20%;
+  }
   .header {
     flex-direction: column; /* Dikey düzenleme */
   }
@@ -477,21 +487,84 @@ body.modal-open {
   }
 
   .footer-left, .footer-right {
-    flex-direction: row; /* Butonlar yatay düzenlemeye devam etsin */
-    justify-content: space-around; /* Butonlar arasında boşluk bırak */
-    gap: 10px; /* Butonlar arasında boşluk */
+    flex-direction: row; /* Buton gruplarını yatayda tut */
+    justify-content: space-around; /* Butonlar arasındaki boşluk */
+    gap: 5px; /* Butonlar arasında boşluk */
+    font-size: 30px; 
+  }
+  .footer-btn, .extra-btn, .highlight-btn {
+    padding: 1px 5px; /* Butonların padding'ini küçült */
+    font-size: 10px; /* Buton yazı boyutunu küçült */
+    width: auto; /* Tam genişlikte olmasın */
+    max-width: 45%; /* Buton genişliğini sınırlamak için */
+    text-align: center; /* Metni ortala */
   }
 
   table {
-    font-size: 1px; /* Küçük ekranlar için font boyutunu azalt */
-    width: 70%; /* Tablo tam genişlikte olacak */
+    font-size: 10px; /* Küçük ekranlar için font boyutunu azalt */
+    width: 100%; /* Tablo tam genişlikte olacak */
+ 
   }
 
   th, td {
     padding: 8px; /* Küçük ekranlar için padding'i azalt */
-    max-width: 150px; /* Hücrelerin maksimum genişliğini azalt */
+    max-width: 10px; /* Hücrelerin maksimum genişliğini azalt */
     white-space: normal; /* Uzun metinlerin sarılmasını sağla */
   }
 
+
 }
+
+/* Büyük ekranlar için (min-width: 769px) */
+@media (min-width: 769px) {
+  h1 {
+    font-size: 24px; /* Daha büyük başlık */
+  }
+
+  .filter-btn {
+    font-size: 18px; /* Daha büyük buton */
+    width:20%;
+  }
+  .app-container {
+    font-size: 24px; /* Daha büyük buton */
+    width: 115%;
+  }
+
+
+
+  table {
+    font-size: 14px; /* Büyük ekranlar için daha büyük font boyutu */
+    width: 100%; /* Tam genişlikte tablo */
+  }
+
+  th, td {
+    font-size: 12px; /* Hücrelerin font boyutu */
+    padding: 10px; /* Daha geniş padding */
+  }
+
+  .export-button {
+    margin: 10px;
+  }
+
+  /* Footer düzenlemesi */
+  .footer {
+    flex-direction: row; /* Yatay düzenleme */
+    justify-content: space-between; /* Butonları yatayda daha geniş aralıkla ayır */
+    padding: 20px; /* Daha geniş padding */
+    width: 100%; /* Ekranın tamamını kaplasın */
+  }
+
+  .footer-left, .footer-right {
+    flex-direction: row; /* Buton gruplarını yatayda tut */
+    gap: 20px; /* Butonlar arasında daha fazla boşluk */
+    font-size: 16px; /* Butonlar için daha büyük yazı */
+  }
+
+  .footer-btn, .extra-btn, .highlight-btn {
+    padding: 10px 20px; /* Butonların padding'ini artır */
+    font-size: 16px; /* Buton yazı boyutunu büyüt */
+    width: auto; /* Tam genişlikte olmasın */
+    max-width: 55%; /* Buton genişliğini sınırlamak için */
+    text-align: center; /* Metni ortala */
+  }
 }
