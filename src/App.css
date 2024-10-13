@@ -1,3 +1,13 @@
+/* Genel stiller */
+body {
+  font-family: 'Roboto', sans-serif; /* Modern bir yazı tipi */
+  background-color: #F8F9FA; /* Arka plan */
+  color: #212529; /* Metin rengi */
+  margin: 0; /* Varsayılan margin'i kaldır */
+  padding: 0; /* Varsayılan padding'i kaldır */
+}
+
+/* Buton Stilleri */
 button {
   background-color: #1f548d; /* Ana renk */
   color: white;
@@ -6,13 +16,14 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
+/* Başlık Stili */
 h1 {
   color: #007BFF; /* Ana renkte büyük başlık */
   font-size: 24px;
 }
-
 
 /* Zebra desenli tablo */
 table {
@@ -26,6 +37,10 @@ table {
 th, td {
   padding: 12px 15px;
   border: 1px solid #E9ECEF; /* İnce sınır çizgisi */
+  max-width: 200px; /* Hücrelerin maksimum genişliği */
+  overflow: hidden; /* Taşmayı gizle */
+  text-overflow: ellipsis; /* Taşan metni üç nokta ile göster */
+  white-space: nowrap; /* Metnin tek satırda kalmasını sağla */
 }
 
 th {
@@ -50,27 +65,13 @@ tbody tr:hover {
   transform: scale(1.01); /* Hafif büyütme efekti */
 }
 
-
-
-
-
-/* input, select {
-  padding: 10px;
-  border: 1px solid #E9ECEF;
-  border-radius: 5px;
-  width: 100%;
-}
- */
-
+/* Uygulama Konteyneri */
 .app-container {
-  font-family: 'Roboto', sans-serif; /* Modern bir yazı tipi */
-  background-color: #F8F9FA; /* Arka plan */
-  color: #212529; /* Metin rengi */
   margin: 20px;
 }
 
+/* Başlık Stili */
 .header {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +79,7 @@ tbody tr:hover {
   padding: 5px;
 }
 
+/* Zaman Görüntüleme Stili */
 .time-display {
   display: flex;
   justify-content: space-between;
@@ -87,6 +89,7 @@ tbody tr:hover {
   margin-top: 10px;
 }
 
+/* Arama kısmı */
 .search-section {
   margin-top: 10px;
 }
@@ -99,6 +102,7 @@ tbody tr:hover {
   border-radius: 5px;
 }
 
+/* Filtre Stili */
 .filters {
   margin-top: 20px;
   display: flex;
@@ -114,6 +118,7 @@ tbody tr:hover {
   margin-right: 10px;
 }
 
+/* Filtre Butonu Stili */
 .filter-btn {
   padding: 10px 20px;
   background-color: #007bff;
@@ -121,6 +126,7 @@ tbody tr:hover {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .filter-btn:hover {
@@ -128,26 +134,13 @@ tbody tr:hover {
   transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
-/* .table {
-  margin-top: 20px;
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table th,
-.table td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: center;
-} */
-
+/* Aksiyon Butonu Stili */
 .action-btn {
   background-color: #28a745;
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
-  cursor: pointer;
 }
 
 .action-btn:hover {
@@ -155,42 +148,7 @@ tbody tr:hover {
   transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
-.footer2 {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer-btn2{
-  padding: 10px 20px;
-  background-color: #17a2b8;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.footer-btn2:hover {
-  background-color: #138496;
-  transform: scale(1.05); /* Hafif büyütme efekti */
-}
-
-.filter-btn2 {
-  padding: 10px 20px;
-  background-color: #2f69a8;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.filter-btn2:hover {
-  background-color: #0056b3;
-  transform: scale(1.05); /* Hafif büyütme efekti */
-}
-
-
+/* Footer Stili */
 .footer {
   position: fixed;
   bottom: 0;
@@ -201,11 +159,13 @@ tbody tr:hover {
   display: flex;
   justify-content: space-between; /* Sol ve sağdaki butonları ayırır */
   border-top: 1px solid #ccc;
+  box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1); /* Üstte gölge efekti */
 }
 
 .footer-left, .footer-right {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap; /* Taşmasını önlemek için */
 }
 
 .footer-btn {
@@ -214,7 +174,6 @@ tbody tr:hover {
   color: white;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
 }
 
 .footer-btn:hover {
@@ -222,6 +181,7 @@ tbody tr:hover {
   transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
+/* Ekstra ve Vurgulu Butonlar */
 .footer .extra-btn {
   background-color: #6c757d;
   color: white;
@@ -242,20 +202,7 @@ tbody tr:hover {
   transform: scale(1.05); /* Hafif büyütme efekti */
 }
 
- .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
+/* Modal Stili */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -279,6 +226,7 @@ tbody tr:hover {
   z-index: 1001; /* Modal'ın üstte kalmasını sağlamak */
 }
 
+/* Modal Listesi */
 .modal-list {
   list-style: none;
   padding: 0;
@@ -291,12 +239,14 @@ tbody tr:hover {
 
 .modal-list li:hover {
   background-color: #f0f0f0;
- 
 }
 
+/* Body durumunu modal açıkken ayarlayın */
 body.modal-open {
   overflow: hidden; /* Modal açıkken body scroll'u kapat */
 }
+
+/* Tarih aralığı seçici stili */
 .date-range-picker {
   display: flex;
   align-items: center;
@@ -307,6 +257,7 @@ body.modal-open {
   font-weight: bold;
 }
 
+/* Export Butonu Stili */
 .export-button {
   margin-left: 20px;
 }
@@ -321,6 +272,103 @@ body.modal-open {
 }
 
 .export-button button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3;
   transform: scale(1.05); /* Hafif büyütme efekti */
+}
+
+/* Duyarlı Tasarım için Medya Sorguları */
+/* Küçük ekranlar için medya sorgusu (max-width: 480px) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 18px; /* Daha küçük başlık */
+  }
+
+  .app-container {
+    margin: 10px; /* Daha küçük margin */
+  }
+
+  table {
+    font-size: 10px; /* Küçük ekranlar için daha küçük font boyutu */
+    width: 100%; /* Tablonun tam genişlikte olmasını sağla */
+  }
+
+  th, td {
+    font-size: 8px; /* Hücre içi font boyutunu küçült */
+    padding: 4px; /* Hücre içindeki padding'i küçült */
+  }
+
+  .export-button {
+    margin: 5px;
+  }
+
+  /* Footer düzenlemesi */
+  .footer {
+    flex-direction: row; /* Yatay düzenleme */
+    justify-content: space-around; /* Butonları yatayda yayıp aralık bırak */
+    padding: 5px; /* Padding'i azalt */
+    width: 10%; /* Tam genişlikte olacak */
+    position: fixed; /* Ekranın altında sabit */
+    bottom: 0;
+    left: 0;
+  }
+
+  .footer-left, .footer-right {
+    flex-direction: row; /* Buton gruplarını yatayda tut */
+    justify-content: space-around; /* Butonlar arasındaki boşluk */
+    gap: 5px; /* Butonlar arasında boşluk */
+    font-size: 30px; 
+  }
+
+  .footer-btn, .extra-btn, .highlight-btn {
+    padding: 1px 5px; /* Butonların padding'ini küçült */
+    font-size: 10px; /* Buton yazı boyutunu küçült */
+    width: auto; /* Tam genişlikte olmasın */
+    max-width: 45%; /* Buton genişliğini sınırlamak için */
+    text-align: center; /* Metni ortala */
+  }
+
+
+/* Orta boy ekranlar için (max-width: 768px) */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 20px; /* Daha küçük ekranlar için başlık boyutunu azalt */
+  }
+
+  .header {
+    flex-direction: column; /* Dikey düzenleme */
+  }
+
+  .time-display {
+    flex-direction: column; /* Dikey düzenleme */
+  }
+
+  button {
+    width: 100%; /* Butonları tam genişlikte yap */
+  }
+
+  .footer {
+    flex-direction: row; /* Yatay düzenleme */
+    justify-content: space-around; /* Butonları yatayda dağıt */
+    padding: 10px;
+    width: 100%; /* Footer genişliği ekranın tamamı kadar olacak */
+  }
+
+  .footer-left, .footer-right {
+    flex-direction: row; /* Butonlar yatay düzenlemeye devam etsin */
+    justify-content: space-around; /* Butonlar arasında boşluk bırak */
+    gap: 10px; /* Butonlar arasında boşluk */
+  }
+
+  table {
+    font-size: 1px; /* Küçük ekranlar için font boyutunu azalt */
+    width: 70%; /* Tablo tam genişlikte olacak */
+  }
+
+  th, td {
+    padding: 8px; /* Küçük ekranlar için padding'i azalt */
+    max-width: 150px; /* Hücrelerin maksimum genişliğini azalt */
+    white-space: normal; /* Uzun metinlerin sarılmasını sağla */
+  }
+
+}
 }
