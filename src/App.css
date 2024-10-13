@@ -32,6 +32,7 @@ table {
   margin-bottom: 20px;
   font-size: 16px;
   text-align: left;
+  margin-top: 10px;
 }
 
 th, td {
@@ -41,6 +42,7 @@ th, td {
   overflow: hidden; /* Taşmayı gizle */
   text-overflow: ellipsis; /* Taşan metni üç nokta ile göster */
   white-space: nowrap; /* Metnin tek satırda kalmasını sağla */
+
 }
 
 th {
@@ -49,6 +51,7 @@ th {
   font-weight: bold;
   text-align: center;
   font-size: 18px; /* Daha büyük yazı fontu */
+
 }
 
 tbody tr:nth-child(odd) {
@@ -78,6 +81,114 @@ tbody tr:hover {
   background-color: #f4f4f4;
   padding: 5px;
 }
+
+
+
+
+/* Tarih aralığı seçici stili */
+.date-range-picker {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Label ile tarih seçici arasında boşluk */
+  font-family: 'Roboto', sans-serif; /* Font ailesi */
+  
+}
+
+.date-range-picker label {
+  font-weight: bold;
+  font-size: 20px;
+  color: #343a40;
+}
+
+.react-datepicker-wrapper {
+  width: 100%; /* Tarih seçici genişliği tam olsun */
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #495057;
+  background-color: white;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.react-datepicker__input-container input:focus {
+  border-color: #007bff; /* Odaklandığında mavi sınır */
+}
+
+.react-datepicker__input-container input::placeholder {
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Tarih seçici popup stili */
+.react-datepicker {
+  border: 3px solid #007bff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.react-datepicker__header {
+  background-color: #007bff;
+  border-bottom: 1px solid #0056b3;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: white;
+  font-weight: bold;
+}
+
+.react-datepicker__day:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.react-datepicker__day--selected {
+  background-color: #007bff;
+}
+
+.react-datepicker__day--in-range {
+  background-color: #d9eaff;
+}
+
+.react-datepicker__day--range-start,
+.react-datepicker__day--range-end {
+  background-color: #0056b3;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Zaman Görüntüleme Stili */
 .time-display {

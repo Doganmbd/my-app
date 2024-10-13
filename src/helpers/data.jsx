@@ -30,7 +30,7 @@ export const data = [
     {
       id: 601027,
       workingUnit: "PARKE5",
-      startTime: "1 Eki 2024 07:45:30",
+      startTime: "01.10.2024 07:45:30",
       endTime: "10 Eki 2024 08:15:30",
       duration: "00:20:00",
       orderNo: "",
@@ -43,8 +43,8 @@ export const data = [
     {
       id: 601028,
       workingUnit: "PARKE5",
-      startTime: "1 Eki 2024 07:45:30",
-      endTime: "10 Eki 2024 08:15:30",
+      startTime: "2024-10-01 07:45:30",
+      endTime: "2024-10-01T07:45:30",
       duration: "00:20:00",
       orderNo: "",
       type: "OEE DURUŞU",
@@ -58,7 +58,7 @@ export const data = [
       workingUnit: "PARKE5",
       startTime: "1 Eki 2024 07:45:30",
       endTime: "10 Eki 2024 08:15:30",
-      duration: "00:20:00",
+      duration: "00:08:00",
       orderNo: "",
       type: "OEE DURUŞU",
       reasonCode: "",

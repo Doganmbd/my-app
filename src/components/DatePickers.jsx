@@ -3,21 +3,28 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../App.css";
 
-function DatePickers() {
+function DatePickers({ onDateChange }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+
+
+  const handleDateChange = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+
+    console.log("Start Date:", start);
+    console.log("End Date:", end);
+    onDateChange(start, end); // Tarih değişiminde tabloyu filtreleyecek fonksiyonu çağırıyoruz
+  };
 
   return (
     
     <div className="date-range-picker">
-      <label>Tarih :</label>
+      <label>Tarih </label>
       <DatePicker
         selected={startDate}
-        onChange={(dates) => {
-          const [start, end] = dates;
-          setStartDate(start);
-          setEndDate(end);
-        }}
+        onChange={handleDateChange}
         startDate={startDate}
         endDate={endDate}
         selectsRange
